@@ -2,11 +2,18 @@
   flake.aspects.virtualization = {
     nixos = {pkgs, ...}: {
       environment.systemPackages = with pkgs; [
-        docker
-        docker-compose
+        dive
+        podman
+        podman-tui
+        podman-compose
       ];
 
-      virtualisation.docker.enable = true;
+      virtualisation.containers.enable = true;
+      virtualisation.podman = {
+        enable = true;
+        dockerCompat = true;
+        defaultNetwork.settings.dns_enabled = true;
+      };
     };
 
     _.duck-muscles.nixos = {pkgs, ...}: {
