@@ -1,4 +1,4 @@
-{
+{self, ...}: {
   flake.aspects = {aspects, ...}: {
     shell = {
       includes = with aspects; [
@@ -17,6 +17,7 @@
           eza
           ripgrep
           zoxide
+          self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia
         ];
       };
 
