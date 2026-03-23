@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  lib,
   ...
 }: let
   self = config.flake.modules;
@@ -41,6 +42,9 @@ in {
           {system = {inherit (opts.hostData) stateVersion;};}
         ];
       };
+    # function to take an aspect and flatten it's imports
+    # into an attribute set
+    flattenAspect = aspect: lib.mergeAttrsList (lib.map (attr: builtins.elemAt attr.imports 0) aspect.imports);
 
     # disko functions
     # boot partition

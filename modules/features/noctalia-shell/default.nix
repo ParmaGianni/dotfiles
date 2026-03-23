@@ -1,16 +1,13 @@
 {
   inputs,
-  config,
-  lib,
+  self,
   ...
 }: let
-  aspect = config.flake.aspects.noctalia.settings.imports;
-  attrs = lib.map (attr: builtins.elemAt attr.imports 0) aspect;
+  settings = self.lib.flattenAspect self.aspects.noctalia.settings;
 in {
   perSystem = {pkgs, ...}: {
     packages.noctalia = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
-      inherit pkgs;
-      settings = lib.mergeAttrsList attrs;
+      inherit pkgs settings;
     };
   };
 }
