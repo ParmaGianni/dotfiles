@@ -8,10 +8,8 @@ in {
       inherit enable;
       shellAliases = {
         "cd" = "z";
-        "llg" = "lazygit";
         "ls" = "eza --icons=always";
-        "vi" = "nvim";
-        "vim" = "nvim";
+        "pm" = "podman";
         "zz" = "zellij";
       };
       syntaxHighlighting.enable = true;
