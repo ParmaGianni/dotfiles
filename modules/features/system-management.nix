@@ -13,6 +13,7 @@
         pciutils
         pstree
         trash-cli
+        upower
         unzip
       ];
 
