@@ -3,7 +3,7 @@
 {
   flake.aspects.niri.homeManager = {config, ...}: let
     # monitors
-    laptop-monitor = "eDP-1";
+    laptop-monitor = "Samsung Display Corp. ATNA40CU05-0  Unknown";
     second-monitor = "ASUSTek COMPUTER INC PA32UCDM T1LMSB000539";
     pen-monitor = "PNP(HAT) Kamvas Pro 19 0xF0000005";
     # workspaces
