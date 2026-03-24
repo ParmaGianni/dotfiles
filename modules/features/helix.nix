@@ -1,9 +1,9 @@
-{lib, ...}: {
-  flake.aspects.helix.homeManager = {
-    programs.helix = {
-      enable = true;
+{inputs, ...}: {
+  perSystem = {pkgs, ...}: {
+    packages.helix = inputs.wrapper-modules.wrappers.helix.wrap {
+      inherit pkgs;
       settings = {
-        theme = lib.mkForce "dracula";
+        theme = "dracula";
         editor = {
           cursorline = true;
           cursor-shape.insert = "bar";
@@ -23,6 +23,7 @@
         {
           name = "rust";
           auto-format = true;
+          text-width = 100;
         }
         {
           name = "go";

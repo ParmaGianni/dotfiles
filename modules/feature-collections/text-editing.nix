@@ -1,13 +1,9 @@
-{
+{self, ...}: {
   flake.aspects = {aspects, ...}: {
     textEditing = {
-      includes = with aspects; [
-        helix
-      ];
-
       nixos = {pkgs, ...}: {
         environment.systemPackages = with pkgs; [
-          helix
+          self.packages.${stdenv.hostPlatform.system}.helix
           # lsp
           alejandra
           lua-language-server
