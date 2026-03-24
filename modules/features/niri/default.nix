@@ -15,7 +15,7 @@ in {
 
       programs.niri = {
         enable = true;
-        # package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
+        package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
       };
     };
   };
