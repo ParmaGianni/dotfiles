@@ -1,7 +1,9 @@
 {
-  flake.aspects.noctalia.settings.brightness = {
-    brightnessStep = 5;
-    enableDdcSupport = false;
-    enforceMinimum = true;
+  flake.aspects.noctalia.config = {
+    settings.brightness = {
+      brightnessStep = 5;
+      enableDdcSupport = false;
+      enforceMinimum = true;
+    };
   };
 }

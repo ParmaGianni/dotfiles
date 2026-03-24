@@ -1,6 +1,6 @@
 {
-  flake.aspects.noctalia.settings = {
-    ui = {
+  flake.aspects.noctalia.config = {
+    settings.ui = {
       bluetoothDetailsViewMode = "grid";
       bluetoothHideUnnamedDevices = false;
       boxBorderEnabled = false;

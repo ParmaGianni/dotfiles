@@ -1,6 +1,6 @@
 {
-  flake.aspects.noctalia.settings.calendar = {
-    cards = [
+  flake.aspects.noctalia.config = {
+    settings.calendar.cards = [
       {
         enabled = true;
         id = "calendar-header-card";

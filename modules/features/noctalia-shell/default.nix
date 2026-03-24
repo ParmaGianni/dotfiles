@@ -3,11 +3,12 @@
   self,
   ...
 }: let
-  settings = self.lib.flattenAspect self.aspects.noctalia.settings;
+  aspect = self.aspects.noctalia;
 in {
   perSystem = {pkgs, ...}: {
     packages.noctalia = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
-      inherit pkgs settings;
+      imports = with aspect; [config];
+      inherit pkgs;
     };
   };
 }

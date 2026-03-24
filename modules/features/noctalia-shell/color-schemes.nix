@@ -1,5 +1,5 @@
 {
-  flake.aspects.noctalia = {
+  flake.aspects.noctalia.config = {
     settings.colorSchemes = {
       darkMode = true;
       generationMethod = "tonal-spot";

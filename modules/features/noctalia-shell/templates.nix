@@ -1,6 +1,6 @@
 {
-  flake.aspects.noctalia.settings = {
-    templates = {
+  flake.aspects.noctalia.config = {
+    settings.templates = {
       activeTemplates = [];
       enableUserTheming = false;
     };

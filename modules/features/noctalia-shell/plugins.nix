@@ -1,5 +1,5 @@
 {
-  flake.aspects.noctalia.settings.plugins = {
-    autoUpdate = false;
+  flake.aspects.noctalia.config = {
+    settings.plugins = {autoUpdate = false;};
   };
 }
