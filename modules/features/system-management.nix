@@ -17,18 +17,16 @@
       ];
 
       services.power-profiles-daemon.enable = true;
+      services.upower.enable = true;
       security.rtkit.enable = true;
     };
 
     homeManager = {pkgs, ...}: {
       home.packages = with pkgs; [
-        libnotify # Mako dependency
         blueman
         pavucontrol
         networkmanagerapplet
       ];
-
-      services.mako.enable = true;
       services.wpaperd.enable = true;
     };
   };
