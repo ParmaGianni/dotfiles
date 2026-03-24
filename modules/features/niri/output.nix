@@ -6,9 +6,9 @@ let
   };
 
   workspaces = {
-    primary = "primary";
-    secondary = "secondary";
-    gaming = "gaming";
+    primary = "1";
+    secondary = "2";
+    gaming = "3";
   };
 
   programs = {
