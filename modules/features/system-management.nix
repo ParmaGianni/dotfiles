@@ -14,6 +14,7 @@
         pstree
         trash-cli
         unzip
+        brightnessctl
       ];
 
       services.power-profiles-daemon.enable = true;
