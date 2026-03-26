@@ -217,7 +217,7 @@ themes {
     dracula-gianni {
         text_unselected {
             base 255 255 255
-            background 0 0 0
+            background 40 42 54
             emphasis_0 255 184 108
             emphasis_1 139 233 253
             emphasis_2 80 250 123
