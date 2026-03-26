@@ -13,7 +13,7 @@ let
 
   programs = {
     browser = "zen-beta";
-    notes = "obsidian";
+    notes = "Obsidian";
     tty = "com.mitchellh.ghostty";
   };
 
@@ -60,12 +60,18 @@ in {
         open-maximized = true;
         matches = [
           {app-id = "${programs.tty}";}
-          {app-id = "${programs.notes}";}
+          {title = "${programs.notes}";}
         ];
       }
       {
         open-on-workspace = "${workspaces.secondary}";
-        matches = [{app-id = "${programs.notes}";}];
+        open-focused = false;
+        matches = [
+          {
+            title = "${programs.notes}";
+            at-startup = true;
+          }
+        ];
       }
       {
         geometry-corner-radius = 10;
