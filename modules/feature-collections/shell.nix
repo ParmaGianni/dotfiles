@@ -1,11 +1,10 @@
-{
+{self, ...}: {
   flake.aspects = {aspects, ...}: {
     shell = {
       includes = with aspects; [
         terminalEmulators
         starship
         yazi
-        zellij
         zsh
       ];
 
@@ -16,6 +15,7 @@
           fzf
           eza
           ripgrep
+          self.packages.${pkgs.stdenv.hostPlatform.system}.zellij
           zoxide
         ];
       };
