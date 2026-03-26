@@ -1,11 +1,11 @@
 {
   flake.aspects.art.homeManager = {pkgs, ...}: {
     home.packages = with pkgs; [
-      # aseprite
+      aseprite
       blender
       godot
       ldtk
-      # krita
+      krita
     ];
   };
 }
