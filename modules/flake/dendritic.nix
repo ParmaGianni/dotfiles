@@ -18,7 +18,7 @@
 
   imports = with inputs; [
     flake-file.flakeModules.default
-    flake-file.flakeModules.nix-auto-follow
+    # flake-file.flakeModules.nix-auto-follow
     flake-aspects.flakeModule
   ];
 
