@@ -35,6 +35,7 @@
             name = builtins.readFile secrets.${secretPaths.name}.path;
             email = builtins.readFile secrets.${secretPaths.email}.path;
           };
+          signing.format = null;
         };
         lazygit = {inherit enable;};
       };
