@@ -3,16 +3,20 @@
   lib,
   ...
 }: let
-  mkVolumeControl = cmd: value: {
-    _attrs.allow-when-locked = true;
-    spawn-sh = "wpctl ${cmd} @DEFAULT_AUDIO_SINK@ ${value}";
-  };
-  mkCtl = cmd: {
-    _attrs.allow-when-locked = true;
-    spawn-sh = "playerctl ${cmd}";
-  };
+  mkVolumeControl = cmd: value: (
+    _: {
+      props.allow-when-locked = true;
+      content.spawn-sh = "wpctl ${cmd} @DEFAULT_AUDIO_SINK@ ${value}";
+    }
+  );
+  mkCtl = cmd: (
+    _: {
+      props.allow-when-locked = true;
+      content.spawn-sh = "playerctl ${cmd}";
+    }
+  );
   mkBinding = action: target: dir: {
-    "${action}-${target}-${dir}" = null;
+    "${action}-${target}-${dir}" = _: {};
   };
   focusWS = ws: {"Mod+${toString ws}".focus-workspace = ws;};
 in {
@@ -20,10 +24,10 @@ in {
     settings.binds =
       {
         # program bindings
-        "Mod+Shift+Slash".show-hotkey-overlay = null;
-        "Mod+SPACE" = {
-          _attrs.hotkey-overlay-title = "Application launcher";
-          spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call launcher toggle";
+        "Mod+Shift+Slash".show-hotkey-overlay = _: {};
+        "Mod+SPACE" = _: {
+          props.hotkey-overlay-title = "Application launcher";
+          content.spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call launcher toggle";
         };
         # audio bindings
         "XF86AudioRaiseVolume" = mkVolumeControl "set-volume" "0.1+ -l 1.0";
@@ -35,22 +39,23 @@ in {
         "XF86AudioPrev" = mkCtl "previous";
         "XF86AudioNext" = mkCtl "next";
         # brightnessctl
-        "XF86MonBrightnessUp" = {
-          _attrs.allow-when-locked = true;
-          spawn = ["brightnessctl" "--class=backlight" "set" "+10%"];
+        "XF86MonBrightnessUp" = _: {
+          props.allow-when-locked = true;
+          content.spawn = ["brightnessctl" "--class=backlight" "set" "+10%"];
         };
-        "XF86MonBrightnessDown" = {
-          _attrs.allow-when-locked = true;
-          spawn = ["brightnessctl" "--class=backlight" "set" "10%-"];
+
+        "XF86MonBrightnessDown" = _: {
+          props.allow-when-locked = true;
+          content.spawn = ["brightnessctl" "--class=backlight" "set" "10%-"];
         };
         # window controls
-        "Mod+O" = {
-          _attrs.repeat = false;
-          toggle-overview = null;
+        "Mod+O" = _: {
+          props.repeat = false;
+          content.toggle-overview = _: {};
         };
-        "Mod+W" = {
-          _attrs.repeat = false;
-          close-window = null;
+        "Mod+W" = _: {
+          props.repeat = false;
+          content.close-window = _: {};
         };
         # move focus
         "Mod+Left" = mkBinding "focus" "column" "left";
@@ -71,18 +76,18 @@ in {
         "Mod+Ctrl+Right" = mkBinding "move" "column" "right";
         "Mod+Ctrl+L" = mkBinding "move" "column" "right";
         # resizing
-        "Mod+R".switch-preset-column-width = null;
-        "Mod+F".maximize-column = null;
-        "Mod+Shift+F".fullscreen-window = null;
+        "Mod+R".switch-preset-column-width = _: {};
+        "Mod+F".maximize-column = _: {};
+        "Mod+Shift+F".fullscreen-window = _: {};
         # floating windows
-        "Mod+V".toggle-window-floating = null;
+        "Mod+V".toggle-window-floating = _: {};
         # screenshot and screencasting
-        "Ctrl+Shift+P".screenshot-screen = null;
-        "Alt+Shift+P".screenshot-window = null;
+        "Ctrl+Shift+P".screenshot-screen = _: {};
+        "Alt+Shift+P".screenshot-window = _: {};
         # session control
-        "Mod+Shift+E".quit = null;
-        "Ctrl+Alt+Delete".quit = null;
-        "Mod+Shift+P".power-off-monitors = null;
+        "Mod+Shift+E".quit = _: {};
+        "Ctrl+Alt+Delete".quit = _: {};
+        "Mod+Shift+P".power-off-monitors = _: {};
       }
       // lib.mergeAttrsList (lib.map focusWS [1 2 3 4 5 6 7 8 9]);
   });

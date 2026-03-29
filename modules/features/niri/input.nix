@@ -2,18 +2,18 @@
   flake.aspects.niri.config = {
     settings.input = {
       keyboard = {
-        xkb = null;
-        numlock = null;
+        xkb = _: {};
+        numlock = _: {};
       };
 
       touchpad = {
-        tap = null;
-        natural-scroll = null;
+        tap = _: {};
+        natural-scroll = _: {};
       };
 
-      mouse = null;
-      trackpoint = null;
-      warp-mouse-to-focus = null;
+      mouse = _: {};
+      trackpoint = _: {};
+      warp-mouse-to-focus = _: {};
     };
   };
 }

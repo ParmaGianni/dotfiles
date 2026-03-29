@@ -25,20 +25,24 @@ in {
       mode = "2880x1800@120.000";
       scale = 2;
       transform = "normal";
-      position._attrs.x = 0;
-      position._attrs.y = 0;
+      position = _: {
+        props.x = 0;
+        props.y = 0;
+      };
     };
 
     settings.outputs.${monitors.second} = {
       mode = "3840x2160@120.000";
       scale = 1.75;
       transform = "normal";
-      focus-at-startup = null;
-      position._attrs.x = 1440;
-      position._attrs.y = 0;
+      focus-at-startup = _: {};
+      position = _: {
+        props.x = 1440;
+        props.y = 0;
+      };
     };
 
-    settings.outputs.${monitors.pen} = {off = null;};
+    settings.outputs.${monitors.pen}.off = _: {};
 
     # workspaces
     settings.workspaces = {

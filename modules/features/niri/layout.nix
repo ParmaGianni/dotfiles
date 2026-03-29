@@ -8,19 +8,21 @@
     colors = base16.mkSchemeAttrs "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
     shadow = {
-      on = null;
+      on = _: {};
       softness = 30;
       spread = 5;
-      offset._attrs.x = 0;
-      offset._attrs.y = 5;
+      offset = _: {
+        props.x = 0;
+        props.y = 5;
+      };
       color = "${colors.withHashtag.base00}";
     };
   in {
     # layout
     settings.layout = with colors.withHashtag; {
       inherit shadow;
-      border = {off = null;};
-      struts = null;
+      border.off = _: {};
+      struts = _: {};
       gaps = 15;
       center-focused-column = "never";
       preset-column-widths = [
@@ -31,8 +33,10 @@
       default-column-width.proportion = 0.5;
       focus-ring = {
         width = 1.5;
-        active-gradient._attrs.from = base0C;
-        active-gradient._attrs.to = base0D;
+        active-gradient = _: {
+          props.from = base0C;
+          props.to = base0D;
+        };
         inactive-color = base04;
       };
     };

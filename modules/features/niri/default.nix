@@ -22,8 +22,9 @@ in {
 
   perSystem = {pkgs, ...}: {
     packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
-      imports = with aspect; [config];
       inherit pkgs;
+      imports = with aspect; [config];
+      v2-settings = true;
     };
   };
 }
