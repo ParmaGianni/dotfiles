@@ -19,7 +19,16 @@
         };
       };
 
-      languages.language = [
+      languages.language = let
+        mkPrettier = name: {
+          inherit name;
+          auto-format = true;
+          formatter = {
+            command = "prettier";
+            args = ["--parser" "${name}"];
+          };
+        };
+      in [
         {
           name = "rust";
           auto-format = true;
@@ -35,14 +44,16 @@
           formatter = {command = "alejandra";};
           auto-format = true;
         }
+        (mkPrettier "markdown")
         {
-          name = "markdown";
+          name = "toml";
           formatter = {
-            command = "prettier";
-            args = ["--parser" "markdown"];
+            command = "taplo";
+            args = ["format" "-"];
           };
           auto-format = true;
         }
+        (mkPrettier "yaml")
       ];
     };
   };

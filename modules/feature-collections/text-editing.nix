@@ -10,6 +10,7 @@
           marksman
           nil
           nodePackages.prettier
+          taplo
         ];
 
         environment.sessionVariables.EDITOR = "hx";
